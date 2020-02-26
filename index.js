@@ -1,7 +1,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const util = require("util");
+
 const api = require("./utils/api");
 const generateMarkdown = require("./utils/generateMarkdown");
+
+const appendFileAsync = util.promisify(fs.appendFile);
+const readFileAsync = util.promisify(fs.readFile);
+
 
 const questions = [{
         type: "input",
@@ -15,7 +21,7 @@ const questions = [{
     },
     {
         type: "input",
-        message: "Enter a one paragraph project description. ",
+        message: "Enter a project description. ",
         name: "description"
     },
     {
@@ -25,7 +31,7 @@ const questions = [{
     },
     {
         type: "input",
-        message: "Enter the installation process i.e. provide a step by step series of examples that describe how to get the development environment running. ",
+        message: "Enter the installation process.",
         name: "installation"
     },
     {
@@ -47,7 +53,7 @@ const questions = [{
     {
         type: "input",
         message: "Enter the frameworks and tools used for this project. ",
-        name: "frameworksAndTools"
+        name: "builtWith"
     },
     {
         type: "input",
@@ -74,12 +80,49 @@ const questions = [{
 ];
 
 function writeToFile(fileName, data) {
-    //output things to read me
-}
+    writeFileAsync(fileName, data)
+    try {
+        (function() {
+            console.log("README file was successfully generated.")
+        })
+    } catch (err) {
+        console.log(err);
+    }
+};
 
-function init() {
-    //access code
+async function init() {
+    try {
+        const questionPrompts = await inquirer.prompt(questions)
+            .then(responses => {
+                const apiResponse = api.getUser(response.username);
+                apiResponse.then(res => {
+                    const data = {
+                        username: response.username,
+                        title: response.title,
+                        description: response.description,
+                        prerequisites: response.prerequisites,
+                        installation: response.installation,
+                        usage: response.usage,
+                        tests: response.tests,
+                        deployment: response.deployment,
+                        builtWith: response.builtWith,
+                        contribute: response.contribute,
+                        authors: response.authors,
+                        licenses: response.licenses,
+                        acknowledgements: response.acknowledgements,
 
+                        name: res.name,
+                        email: res.email,
+                        profilePic: res.avatar_url,
+                    }
+                    const markdownFile = markdown(data)
+                    writeToFile("README.md", markdownFile);
+                })
+            });
+
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 init();
