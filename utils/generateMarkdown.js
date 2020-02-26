@@ -3,6 +3,8 @@ function generateMarkdown(data) {
 # ${data.title}![GitHub package.json version](https://img.shields.io/github/package-json/v/madel-liquido/Good-README-Generator)
 ${data.description}
 
+# Getting Started
+
 # Tables of Contents
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
@@ -19,25 +21,26 @@ ${data.description}
 ${data.prerequisites}
 ## Installation
 ${data.installation}
-## Usage
+# Usage
 ${data.usage}
-## Tests
+# Tests
 ${data.tests}
-## Deployment
+# Deployment
 ${data.deployment}
-## Built With
+# Built With
 ${data.builtWith}
-## Contributing
+# Contributing
 ${data.contribute}
-##  Authors
+#  Authors
 ${data.authors}
-## License
+# License
 ${data.licenses}
-## Acknowledgements
+# Acknowledgements
 ${data.acknowledgements}
 
 ## Questions
 Please e-mail me at ${data.email} with any question pertaining to the project.
+\
 \
 ![Profile Avatar](${data.profilePic})
 `;

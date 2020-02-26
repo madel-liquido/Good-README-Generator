@@ -1,6 +1,8 @@
 
-# Please e-mail me at ${data.email} with any question pertaining to the project.![GitHub package.json version](https://img.shields.io/github/package-json/v/madel-liquido/Good-README-Generator)
+# Good-README-Generator![GitHub package.json version](https://img.shields.io/github/package-json/v/madel-liquido/Good-README-Generator)
 A command-line application that dynamically generates a README.md from a user's input.
+
+# Getting Started
 
 # Tables of Contents
 * [Prerequisites](#prerequisites)
@@ -15,25 +17,25 @@ A command-line application that dynamically generates a README.md from a user's 
 * [Acknowledgements](#acknowledgements)
 
 ## Prerequisites 
-No prereqs
+No applicable prerequisites.
 ## Installation
 npm install
-## Usage
-Intended to be used to make readmes
-## Tests
-No tests
-## Deployment
-No notes
-## Built With
-npm
-## Contributing
-No contributing info
-##  Authors
+# Usage
+This project is intended to be used to dynamically generate README.md files.
+# Tests
+No applicable tests.
+# Deployment
+No additional notes.
+# Built With
+npm install including axios and dotenv
+# Contributing
+No applicable contributing information.
+#  Authors
 Madel Liquido
-## License
-No licenses
-## Acknowledgements
-n/a
+# License
+No license.
+# Acknowledgements
+John, Evan, Christian, and my awesome cohort for always being so helpful and supportive!
 
 ## Questions
 Please e-mail me at madel.liquido@gmail.com with any question pertaining to the project.
