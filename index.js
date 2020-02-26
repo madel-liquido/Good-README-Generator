@@ -80,7 +80,7 @@ const questions = [{
 
 async function writeToFile(fileName, data) {
     writeFileAsync(fileName, data).then(function() {
-        console.log("README.md file was successful generated!");
+        console.log("README.md file was successfully generated!");
     }).catch(err => {
         console.log(err);
     });

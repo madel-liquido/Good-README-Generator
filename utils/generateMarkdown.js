@@ -15,28 +15,29 @@ ${data.description}
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
 
-##Prerequisites 
+## Prerequisites 
 ${data.prerequisites}
 ## Installation
 ${data.installation}
-#Usage
+# Usage
 ${data.usage}
-#Tests
+# Tests
 ${data.tests}
-#Deployment
+# Deployment
 ${data.deployment}
-#Built With
+# Built With
 ${data.builtWith}
-#Contributing
+# Contributing
 ${data.contribute}
-#Authors
+# Authors
 ${data.authors}
-#License
+# License
 ${data.licenses}
-#Acknowledgements
+# Acknowledgements
 ${data.acknowledgements}
 
 # Questions
+
 ![Profile Avatar](${data.profilePic})
 Please e-mail me at ${data.email} with any question pertaining to the project.
 `;
