@@ -78,15 +78,12 @@ const questions = [{
     }
 ];
 
-function writeToFile(fileName, data) {
-    writeFileAsync(fileName, data)
-    try {
-        (function() {
-            console.log("README file was successfully generated.")
-        })
-    } catch (err) {
+async function writeToFile(fileName, data) {
+    writeFileAsync(fileName, data).then(function() {
+        console.log("README.md file was successful generated!");
+    }).catch(err => {
         console.log(err);
-    }
+    });
 };
 
 async function init() {
@@ -113,7 +110,7 @@ async function init() {
                         acknowledgements: response.acknowledgements,
 
                         name: res.name,
-                        email: res.email,
+                        email: "madel.liquido@gmail.com",
                         profilePic: res.avatar_url,
                     }
                     const markdownFile = generateMarkdown(data)
