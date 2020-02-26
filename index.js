@@ -5,8 +5,7 @@ const util = require("util");
 const api = require("./utils/api");
 const generateMarkdown = require("./utils/generateMarkdown");
 
-const appendFileAsync = util.promisify(fs.appendFile);
-const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 const questions = [{
@@ -91,11 +90,13 @@ function writeToFile(fileName, data) {
 };
 
 async function init() {
-    try {
-        const questionPrompts = await inquirer.prompt(questions)
-            .then(responses => {
-                const apiResponse = api.getUser(response.username);
-                apiResponse.then(res => {
+
+    await inquirer
+        .prompt(questions)
+        .then(response => {
+            const username = response.username;
+            const apiResponse = api.getUser(username);
+            apiResponse.then(res => {
                     const data = {
                         username: response.username,
                         title: response.title,
@@ -115,14 +116,14 @@ async function init() {
                         email: res.email,
                         profilePic: res.avatar_url,
                     }
-                    const markdownFile = markdown(data)
+                    const markdownFile = generateMarkdown(data)
+                    console.log(markdownFile)
                     writeToFile("README.md", markdownFile);
                 })
-            });
-
-    } catch (err) {
-        console.log(err)
-    }
+                .catch(err => {
+                    console.log(err)
+                });
+        })
 }
 
 init();

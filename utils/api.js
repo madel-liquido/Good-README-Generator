@@ -1,25 +1,25 @@
-const axios = require("axios");
-const dotenv = require("dotenv").config();
-
+const axios = require('axios');
+const dotenv = require('dotenv').config();
 const api = {
     getUser(username) {
-        const url = `https://api.github.com/users/${username}`;
+        const gitURL = `https://api.github.com/users/${username}`;
+        return axios({
 
-        const config = {
-            username: `${process.env.CLIENT_ID}`,
-            password: `${process.env.CLIENT_PASS}`
-        }
-
-        axios
-            .get(url, config)
+                url: gitURL,
+                method: "get",
+                auth: {
+                    username: process.env.CLIENT_ID,
+                    password: process.env.CLIENT_PASS
+                }
+            })
             .then(res => {
-                return res.data
+                const userData = res.data;
+                return userData;
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
     }
 };
-
 
 module.exports = api;
